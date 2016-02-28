@@ -1,33 +1,48 @@
 package model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.sql.Timestamp;
 
 public class CandleStick {
 	
-	Date date;
-	final double open;
-	final double high;
-	final double low;
-	final double close;
-	final double volume;
+	private final Timestamp timeStamp; 
+	private final double open;
+	private final double high;
+	private final double low;
+	private final double close;
+	private final double volume;
 	
-	public CandleStick(String[] arr) {
+	public CandleStick(Timestamp timeStamp, double open, double high, double low, double close, double volume) {
+		
+		this.timeStamp = timeStamp;
+		this.open = open;
+		this.low = low;
+		this.high = high;
+		this.close = close;
+		this.volume = volume;
+	}
 
-		DateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
-		try {
-			this.date = format.parse(arr[0]);
-		} catch (ParseException e) {	
-			e.printStackTrace();
-		}
-		this.open = Double.parseDouble(arr[1]);
-		this.low = Double.parseDouble(arr[2]);
-		this.high = Double.parseDouble(arr[3]);
-		this.close = Double.parseDouble(arr[4]);
-		this.volume = Double.parseDouble(arr[5]);
+	public Timestamp getTimeStamp() {
+		return timeStamp;
+	}
+
+	public double getOpen() {
+		return open;
+	}
+
+	public double getHigh() {
+		return high;
+	}
+
+	public double getLow() {
+		return low;
+	}
+
+	public double getClose() {
+		return close;
+	}
+
+	public double getVolume() {
+		return volume;
 	}
 
 }
